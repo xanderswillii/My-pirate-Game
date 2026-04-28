@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://buka7odq2pgs1"]
+
+[ext_resource type="Script" uid="uid://bpr6nue7ai2ac" path="res://Scripts/items_scripts/items.gd" id="1_pfens"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ckxa0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a71q3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1wla"]
+size = Vector3(2.185, 1.735, 2.6)
+
+[node name="items" type="CSGBox3D" unique_id=1141061358]
+script = ExtResource("1_pfens")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=780107689]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1475256470]
+shape = SubResource("BoxShape3D_ckxa0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=486959967]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=272533669]
+shape = SubResource("BoxShape3D_a71q3")
+
+[node name="hitbox" type="Area3D" parent="." unique_id=936030699]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=1774601322]
+shape = SubResource("BoxShape3D_v1wla")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
